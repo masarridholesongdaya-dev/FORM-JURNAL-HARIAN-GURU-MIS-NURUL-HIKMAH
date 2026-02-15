@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Penyetoran Jurnal Harian Guru</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    h1, h2 { font-family: 'Playfair Display', serif; letter-spacing: 0.5px; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+      50% { transform: translateY(-15px) rotateZ(1deg); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
+    @keyframes glow-pulse {
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 
+                    0 0 40px rgba(255, 107, 107, 0.1);
+      }
+      50% { 
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.4), 
+                    0 0 80px rgba(255, 107, 107, 0.3);
+      }
+    }
+    
+    @keyframes slide-in {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes title-glow {
+      0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+      50% { text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(100, 200, 255, 0.5); }
+    }
+    
+    body {
+      background: linear-gradient(-45deg, #1a1a2e, #0f3460, #16213e, #533483);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(15, 52, 96, 0.8));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .gradient-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.15), transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(200, 100, 255, 0.15), transparent 50%);
+      pointer-events: none;
+    }
+    
+    .card-gradient-1 { 
+      background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-gradient-1::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+      background-size: 30px 30px;
+      animation: shimmer 3s infinite;
+    }
+    
+    .card-gradient-2 { 
+      background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-gradient-2::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+      background-size: 30px 30px;
+      animation: shimmer 3s infinite;
+    }
+    
+    .card-gradient-3 { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-gradient-3::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+      background-size: 30px 30px;
+      animation: shimmer 3s infinite;
+    }
+    
+    .card-gradient-4 { 
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-gradient-4::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+      background-size: 30px 30px;
+      animation: shimmer 3s infinite;
+    }
+    
+    .card-gradient-5 { 
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-gradient-5::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+      background-size: 30px 30px;
+      animation: shimmer 3s infinite;
+    }
+    
+    .card-gradient-6 { 
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-gradient-6::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+      background-size: 30px 30px;
+      animation: shimmer 3s infinite;
+    }
+    
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .floating { animation: float 4s ease-in-out infinite; }
+    .floating-delay-1 { animation-delay: 0.2s; }
+    .floating-delay-2 { animation-delay: 0.4s; }
+    .floating-delay-3 { animation-delay: 0.6s; }
+    .floating-delay-4 { animation-delay: 0.8s; }
+    .floating-delay-5 { animation-delay: 1s; }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-20px) scale(1.05) rotateZ(-2deg);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 
+                  inset 0 0 30px rgba(255, 255, 255, 0.2);
+      animation: glow-pulse 0.6s ease-in-out;
+    }
+    
+    .header {
+      animation: slide-in 0.8s ease-out;
+    }
+    
+    #page-title {
+      animation: title-glow 3s ease-in-out infinite;
+    }
+    
+    .card-grid > * {
+      animation: slide-in 0.6s ease-out backwards;
+    }
+    
+    .card-grid > :nth-child(1) { animation-delay: 0.2s; }
+    .card-grid > :nth-child(2) { animation-delay: 0.4s; }
+    .card-grid > :nth-child(3) { animation-delay: 0.6s; }
+    .card-grid > :nth-child(4) { animation-delay: 0.8s; }
+    .card-grid > :nth-child(5) { animation-delay: 1s; }
+    .card-grid > :nth-child(6) { animation-delay: 1.2s; }
+    
+    .icon-button {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .icon-button:hover {
+      transform: rotate(10deg) scale(1.2);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="min-h-full w-full gradient-bg overflow-auto"><!-- Decorative floating orbs -->
+   <div class="fixed top-10 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
+   <div class="fixed bottom-20 right-20 w-40 h-40 bg-pink-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+   <div class="fixed top-1/3 right-10 w-24 h-24 bg-purple-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 0.5s;"></div>
+   <div class="fixed bottom-1/3 left-1/4 w-28 h-28 bg-cyan-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+   <div class="relative z-10 max-w-7xl mx-auto px-4 py-16"><!-- Header -->
+    <header class="header text-center mb-16">
+     <div class="inline-block mb-6 floating">
+      <div class="text-8xl drop-shadow-2xl">
+       📚
+      </div>
+     </div>
+     <h1 id="page-title" class="text-5xl md:text-6xl font-extrabold text-white mb-3 drop-shadow-lg">Form Penyetoran Jurnal</h1>
+     <p class="text-2xl font-light text-white/90 mb-4">Harian Guru</p>
+     <div class="inline-block px-6 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-4">
+      <p id="subtitle-text" class="text-lg text-white/80 font-medium">🏫 MIS Nurul Hikmah - Pilih Kelas untuk Penyetoran Jurnal</p>
+     </div>
+    </header><!-- Cards Grid -->
+    <main class="card-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"><!-- Kelas 1 --> <a href="https://docs.google.com/forms/d/e/1FAIpQLSchK7MN98F2LN7nm9WczsoaNgfr9IyzDOuGFvGcSWRF99gG-w/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="card-hover floating floating-delay-1 group block rounded-3xl p-8 card-gradient-1 shadow-2xl cursor-pointer relative">
+      <div class="card-content">
+       <div class="flex items-center justify-between mb-6">
+        <div><span class="text-7xl">1️⃣</span>
+        </div>
+        <div class="icon-button w-16 h-16 bg-white/25 rounded-full flex items-center justify-center">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+         </svg>
+        </div>
+       </div>
+       <h2 class="text-3xl font-bold text-white mb-2">Kelas 1</h2>
+       <p class="text-white/90 text-sm font-light">Penyetoran Jurnal Harian Kelas 1</p>
+       <div class="mt-4 flex items-center text-white/80 text-sm"><span class="inline-block w-2 h-2 bg-white/60 rounded-full mr-2"></span> <span>Formulir Google Forms</span>
+       </div>
+      </div></a> <!-- Kelas 2 --> <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0kmKigrF1STFcTHtnZHt9kV7IQwPwFioGV9hvB9tTyYqmaA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="card-hover floating floating-delay-2 group block rounded-3xl p-8 card-gradient-2 shadow-2xl cursor-pointer relative">
+      <div class="card-content">
+       <div class="flex items-center justify-between mb-6">
+        <div><span class="text-7xl">2️⃣</span>
+        </div>
+        <div class="icon-button w-16 h-16 bg-white/25 rounded-full flex items-center justify-center">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+         </svg>
+        </div>
+       </div>
+       <h2 class="text-3xl font-bold text-white mb-2">Kelas 2</h2>
+       <p class="text-white/90 text-sm font-light">Penyetoran Jurnal Harian Kelas 2</p>
+       <div class="mt-4 flex items-center text-white/80 text-sm"><span class="inline-block w-2 h-2 bg-white/60 rounded-full mr-2"></span> <span>Formulir Google Forms</span>
+       </div>
+      </div></a> <!-- Kelas 3 --> <a href="https://docs.google.com/forms/d/e/1FAIpQLSetuy60BIodV_QxzP177wwYq7243Isd28Ya9Ry3f9uDWynW0g/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="card-hover floating floating-delay-3 group block rounded-3xl p-8 card-gradient-3 shadow-2xl cursor-pointer relative">
+      <div class="card-content">
+       <div class="flex items-center justify-between mb-6">
+        <div><span class="text-7xl">3️⃣</span>
+        </div>
+        <div class="icon-button w-16 h-16 bg-white/25 rounded-full flex items-center justify-center">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+         </svg>
+        </div>
+       </div>
+       <h2 class="text-3xl font-bold text-white mb-2">Kelas 3</h2>
+       <p class="text-white/90 text-sm font-light">Penyetoran Jurnal Harian Kelas 3</p>
+       <div class="mt-4 flex items-center text-white/80 text-sm"><span class="inline-block w-2 h-2 bg-white/60 rounded-full mr-2"></span> <span>Formulir Google Forms</span>
+       </div>
+      </div></a> <!-- Kelas 4 --> <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzgCOv3ffDs-U4ffm0WV8Awd9LCLWBv8xu_Ut6akDtdiEiuA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="card-hover floating floating-delay-4 group block rounded-3xl p-8 card-gradient-4 shadow-2xl cursor-pointer relative">
+      <div class="card-content">
+       <div class="flex items-center justify-between mb-6">
+        <div><span class="text-7xl">4️⃣</span>
+        </div>
+        <div class="icon-button w-16 h-16 bg-white/25 rounded-full flex items-center justify-center">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+         </svg>
+        </div>
+       </div>
+       <h2 class="text-3xl font-bold text-white mb-2">Kelas 4</h2>
+       <p class="text-white/90 text-sm font-light">Penyetoran Jurnal Harian Kelas 4</p>
+       <div class="mt-4 flex items-center text-white/80 text-sm"><span class="inline-block w-2 h-2 bg-white/60 rounded-full mr-2"></span> <span>Formulir Google Forms</span>
+       </div>
+      </div></a> <!-- Kelas 5 --> <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzgCOv3ffDs-U4ffm0WV8Awd9LCLWBv8xu_Ut6akDtdiEiuA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="card-hover floating floating-delay-5 group block rounded-3xl p-8 card-gradient-5 shadow-2xl cursor-pointer relative">
+      <div class="card-content">
+       <div class="flex items-center justify-between mb-6">
+        <div><span class="text-7xl">5️⃣</span>
+        </div>
+        <div class="icon-button w-16 h-16 bg-white/25 rounded-full flex items-center justify-center">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+         </svg>
+        </div>
+       </div>
+       <h2 class="text-3xl font-bold text-white mb-2">Kelas 5</h2>
+       <p class="text-white/90 text-sm font-light">Penyetoran Jurnal Harian Kelas 5</p>
+       <div class="mt-4 flex items-center text-white/80 text-sm"><span class="inline-block w-2 h-2 bg-white/60 rounded-full mr-2"></span> <span>Formulir Google Forms</span>
+       </div>
+      </div></a> <!-- Kelas 6 --> <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzgCOv3ffDs-U4ffm0WV8Awd9LCLWBv8xu_Ut6akDtdiEiuA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="card-hover floating group block rounded-3xl p-8 card-gradient-6 shadow-2xl cursor-pointer relative">
+      <div class="card-content">
+       <div class="flex items-center justify-between mb-6">
+        <div><span class="text-7xl">6️⃣</span>
+        </div>
+        <div class="icon-button w-16 h-16 bg-white/25 rounded-full flex items-center justify-center">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+         </svg>
+        </div>
+       </div>
+       <h2 class="text-3xl font-bold text-white mb-2">Kelas 6</h2>
+       <p class="text-white/90 text-sm font-light">Penyetoran Jurnal Harian Kelas 6</p>
+       <div class="mt-4 flex items-center text-white/80 text-sm"><span class="inline-block w-2 h-2 bg-white/60 rounded-full mr-2"></span> <span>Formulir Google Forms</span>
+       </div>
+      </div></a>
+    </main><!-- Footer -->
+    <footer class="text-center text-white/60 text-sm font-light">
+     <p>✨ Hover pada kartu untuk melihat efek animasi | Klik untuk membuka formulir penyetoran</p>
+    </footer>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      page_title: 'Form Penyetoran Jurnal Harian Guru',
+      subtitle_text: '🏫 MIS Nurul Hikmah - Pilih Kelas untuk Penyetoran Jurnal'
+    };
+    
+    async function onConfigChange(config) {
+      document.getElementById('page-title').textContent = config.page_title || defaultConfig.page_title;
+      document.getElementById('subtitle-text').textContent = config.subtitle_text || defaultConfig.subtitle_text;
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['page_title', config.page_title || defaultConfig.page_title],
+        ['subtitle_text', config.subtitle_text || defaultConfig.subtitle_text]
+      ]);
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce3444e07d462b7',t:'MTc3MTE0MjM3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
